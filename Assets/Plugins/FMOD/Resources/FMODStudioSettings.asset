@@ -390,8 +390,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../OneDrive/Documents/FMOD Studio/JAMIN/JAMIN.fspro
-  sourceBankPath: ../OneDrive/Documents/FMOD Studio/JAMIN/Build
+  sourceProjectPath: Assets/FMOD Project/JAMIN/JAMIN.fspro
+  sourceBankPath: Assets/FMOD Project/JAMIN/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
