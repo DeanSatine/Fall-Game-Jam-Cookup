@@ -17,7 +17,6 @@ public class Camera : MonoBehaviour
     {
 
         RenderMaterial.SetFloat("_Contribution", 1.0f - Mathf.Clamp(Vector3.Distance(Monitor.transform.position, NearView.position), 0.0f, 1.0f));
-        Debug.Log(Mathf.Clamp(Vector3.Distance(Monitor.transform.position, NearView.position), 0.0f, 1.0f));
 
         Graphics.Blit(source, destination, RenderMaterial);
     }
