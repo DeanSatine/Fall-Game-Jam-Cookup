@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,8 +19,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 MovDir;
     private int MoveSpeed = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 Turn = new Vector3(0, 75, 0);
+
+
+// Start is called before the first frame update
+void Start()
     {
         Body = GetComponent<Rigidbody>();
         Trans = GetComponent<Transform>();
@@ -28,7 +32,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Body.velocity = MovDir * MoveSpeed;
+        Body.velocity = MovDir.normalized * MoveSpeed;
     }
 
     private void FixedUpdate()
@@ -36,7 +40,7 @@ public class PlayerController : MonoBehaviour
         MovDir.x = Input.GetAxis("Horizontal");
         MovDir.z = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.E) && HoveredObject != null)
+        if (Input.GetKeyDown(KeyCode.F) && HoveredObject != null)
         {
             Interact();
         }
@@ -51,6 +55,15 @@ public class PlayerController : MonoBehaviour
             PutBack();
             IsHoldingSomething = false;
             print("Putting down");
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            Trans.Rotate(Turn * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.Q))
+        {
+            Trans.Rotate(-Turn * Time.deltaTime);
         }
 
     }
