@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
+    private GameObject HoveredObject = null;
+
     private Rigidbody Body;
 
     private Vector3 MovDir;
@@ -25,6 +28,35 @@ public class PlayerController : MonoBehaviour
     {
         MovDir.x = Input.GetAxis("Horizontal");
         MovDir.z = Input.GetAxis("Vertical");
+
+        if (Input.GetKey(KeyCode.E) && HoveredObject != null)
+        {
+            Interact();
+        }
+
+    }
+
+    //These are for the object interaction system
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Interactable")
+        {
+            HoveredObject = other.gameObject;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == HoveredObject)
+        {
+            HoveredObject = null;
+        }
+    }
+
+
+    //Interact with the hovered object
+    private void Interact()
+    {
+        //Do the interaction
     }
 
 
