@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
         }
+        if (Input.GetKey(KeyCode.F) && HoveredObject != null)
+        {
+            PickUp();
+        }
 
     }
 
@@ -56,8 +60,12 @@ public class PlayerController : MonoBehaviour
     //Interact with the hovered object
     private void Interact()
     {
-        //Do the interaction
+        HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
     }
 
+    private void PickUp()
+    {
+        HoveredObject.GetComponent<InteractableObjects>().OnPickUp();
+    }
 
 }

@@ -2,23 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObjects : MonoBehaviour
+public abstract class InteractableObjects : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract void OnInteraction();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnInteraction()
-    {
-
-    }
-
-}
+    public abstract void OnPickUp();
+};
