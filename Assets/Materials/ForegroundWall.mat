@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grading
-  m_Shader: {fileID: 4800000, guid: 835a272b54ae6194d8327fc8a98e5c4c, type: 3}
+  m_Name: ForegroundWall
+  m_Shader: {fileID: 4800000, guid: 49b04e7fcd8f70f47b3d2bbaa17d3572, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -43,12 +43,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _LUT:
-        m_Texture: {fileID: 2800000, guid: a3086550678eb8a42887225c83de7e7c, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a984bc7f38e09fa43a8ffedb98cdbaa9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,7 +62,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _Contribution: 0.9999923
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
