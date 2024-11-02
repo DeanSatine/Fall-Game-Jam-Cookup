@@ -1,4 +1,4 @@
-Shader "Custom/Foreground"
+Shader "Custom/Texture"
 {
     Properties
     {
@@ -7,17 +7,6 @@ Shader "Custom/Foreground"
     }
     SubShader
     {
-
-        Tags { "Queue"="Geometry+1" }
-
-        ZWrite off
-        
-        Stencil
-        {
-            Ref 1
-            Comp notequal
-            Pass IncrSat
-        }
 
         CGPROGRAM
 
