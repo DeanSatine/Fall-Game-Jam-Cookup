@@ -6,5 +6,7 @@ public abstract class InteractableObjects : MonoBehaviour
 {
     public abstract void OnInteraction();
 
-    public abstract void OnPickUp();
+    public abstract void OnPickUp(Transform offset);
+
+    public abstract void OnPutBack();
 };

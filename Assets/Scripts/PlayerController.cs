@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
 
-    private GameObject HoveredObject = null;
+    public GameObject HoveredObject = null;
+
+    [SerializeField] private Transform HandPos;
+
+    private bool IsHoldingSomething = false;
 
     private Rigidbody Body;
+    private Transform Trans;
 
     private Vector3 MovDir;
     private int MoveSpeed = 5;
@@ -16,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Body = GetComponent<Rigidbody>();
+        Trans = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -29,13 +36,21 @@ public class PlayerController : MonoBehaviour
         MovDir.x = Input.GetAxis("Horizontal");
         MovDir.z = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.E) && HoveredObject != null)
+        if (Input.GetKeyDown(KeyCode.E) && HoveredObject != null)
         {
             Interact();
         }
-        if (Input.GetKey(KeyCode.F) && HoveredObject != null)
+        if (Input.GetKey(KeyCode.Mouse0) && HoveredObject != null && IsHoldingSomething == false)
         {
             PickUp();
+            IsHoldingSomething = true;
+            print("Picking up");
+        }
+        if (Input.GetKey(KeyCode.Mouse1) && IsHoldingSomething == true)
+        {
+            PutBack();
+            IsHoldingSomething = false;
+            print("Putting down");
         }
 
     }
@@ -50,7 +65,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == HoveredObject)
+        if (other.gameObject == HoveredObject && IsHoldingSomething == false)
         {
             HoveredObject = null;
         }
@@ -65,7 +80,17 @@ public class PlayerController : MonoBehaviour
 
     private void PickUp()
     {
-        HoveredObject.GetComponent<InteractableObjects>().OnPickUp();
+        if (HoveredObject.name == "Poster")
+        {
+            HoveredObject.GetComponent<Poster>().OnPickUp(HandPos);
+        }
     }
 
+    private void PutBack()
+    {
+        if (HoveredObject.name == "Poster")
+        {
+            HoveredObject.GetComponent<Poster>().OnPutBack();
+        }
+    }
 }
