@@ -126,14 +126,18 @@ public class PlayerControllerV2 : MonoBehaviour
 
         animator.Play("Interact");
 
-        if (HeldObject != null)
+        if (HeldObject != null && HoveredObject.name == "Door")
+        {
+            HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
+        }
+        else if (HeldObject != null)
         {
             HeldObject.GetComponent<InteractableObjects>().UseItem(HoveredObject);
         }
         else if (HoveredObject.name != "Sink")
         {
             HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
-        } 
+        }
     }
 
     private void PickUp()
