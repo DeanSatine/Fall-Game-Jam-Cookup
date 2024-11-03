@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public GameObject HoveredObject = null;
+    public GameObject HeldObject = null;
 
     [SerializeField] private Transform HandPos;
     [SerializeField] private Camera cam;
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Transform Trans;
 
     private Vector3 MovDir;
-    private int MoveSpeed = 5;
+    [SerializeField] private int MoveSpeed = 5;
 
     private StudioEventEmitter tick;
 
@@ -47,13 +48,22 @@ public class PlayerController : MonoBehaviour
         //MovDir.x = Input.GetAxis("Horizontal");
         //MovDir.z = Input.GetAxis("Vertical");
 
-        MovDir = cam.transform.forward * Input.GetAxis("Vertical");
-        MovDir += cam.transform.right * Input.GetAxis("Horizontal");
+        MovDir = cam.transform.forward.normalized * Input.GetAxis("Vertical");
+        MovDir += cam.transform.right.normalized * Input.GetAxis("Horizontal");
+        MovDir.y = 0;
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+        if (MovDir.magnitude == 0)
         {
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
             tick.Play();
+            if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+            {
+                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            }
+        }
+        else
+        {
+            transform.LookAt(transform.position + MovDir.normalized);
         }
 
         if (Input.GetKeyDown(KeyCode.F) && HoveredObject != null)
@@ -64,15 +74,17 @@ public class PlayerController : MonoBehaviour
         {
             PickUp();
             IsHoldingSomething = true;
+            HeldObject = HoveredObject;
             print("Picking up");
         }
         if (Input.GetKey(KeyCode.Mouse1) && IsHoldingSomething == true)
         {
             PutBack();
             IsHoldingSomething = false;
+            HeldObject = null;
             print("Putting down");
         }
-
+/*
         if (Input.GetKey(KeyCode.E))
         {
             Trans.Rotate(Turn * Time.deltaTime);
@@ -81,13 +93,13 @@ public class PlayerController : MonoBehaviour
         {
             Trans.Rotate(-Turn * Time.deltaTime);
         }
-
+*/
     }
 
     //These are for the object interaction system
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Interactable")
+        if (other.tag == "Interactable" && other != HeldObject)
         {
             HoveredObject = other.gameObject;
         }
@@ -104,7 +116,14 @@ public class PlayerController : MonoBehaviour
     //Interact with the hovered object
     private void Interact()
     {
-        HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
+        if (HeldObject != null)
+        {
+            HeldObject.GetComponent<InteractableObjects>().UseItem(HoveredObject);
+        }
+        else if (HoveredObject.name != "Sink")
+        {
+            HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
+        } 
     }
 
     private void PickUp()
@@ -112,6 +131,10 @@ public class PlayerController : MonoBehaviour
         if (HoveredObject.name == "Poster")
         {
             HoveredObject.GetComponent<Poster>().OnPickUp(HandPos);
+        }
+        else if (HoveredObject.name == "Cup")
+        {
+            HoveredObject.GetComponent<Cup>().OnPickUp(HandPos);
         }
     }
 

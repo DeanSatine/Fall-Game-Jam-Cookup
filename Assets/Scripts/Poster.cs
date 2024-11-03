@@ -29,6 +29,11 @@ public class Poster : InteractableObjects
         }
     }
 
+    public override void UseItem(GameObject thing)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void OnInteraction()
     {
         throw new System.NotImplementedException();
