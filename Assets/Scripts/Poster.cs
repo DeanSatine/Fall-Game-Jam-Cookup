@@ -31,7 +31,16 @@ public class Poster : InteractableObjects
 
     public override void UseItem(GameObject thing)
     {
-        throw new System.NotImplementedException();
+        if (thing.name == "Pepper" && levelmanager.isDoorOpen)
+        {
+            print("*Horid screaming of trapped souls*");
+            levelmanager.isPosterGone = true;
+            Destroy(gameObject, 1);
+        }
+        else if (thing.name == "Pepper")
+        {
+            print("open the door first");
+        }
     }
 
     public override void OnInteraction()
