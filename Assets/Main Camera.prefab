@@ -399,7 +399,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 439
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -540,13 +540,6 @@ MonoBehaviour:
   FarView: {fileID: 1654207302544611317}
   Placements: []
   InputWait: 15
-  aer:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!1 &5555203049314326472
 GameObject:
   m_ObjectHideFlags: 0
