@@ -38,6 +38,19 @@ public class PlayerControllerV2 : MonoBehaviour
     void Update()
     {
         Body.velocity = MovDir.normalized * MoveSpeed;
+
+        if (MovDir.magnitude == 0)
+        {
+            if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit, Mathf.Infinity))
+            {
+                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            }
+        }
+        else
+        {
+            transform.LookAt(transform.position + MovDir.normalized);
+        }
+
     }
 
     private void FixedUpdate()
@@ -51,17 +64,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
         animator.SetBool("Moving", MovDir.magnitude != 0);
 
-        if (MovDir.magnitude == 0)
-        {
-            if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
-            {
-                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
-            }
-        }
-        else
-        {
-            transform.LookAt(transform.position + MovDir.normalized);
-        }
+        
 
         if (Input.GetKey(KeyCode.F) && HoveredObject != null)
         {
