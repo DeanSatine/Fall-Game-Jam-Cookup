@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class Sink : InteractableObjects
 {
 
     [SerializeField] GameObject Door;
+
+    private StudioEventEmitter tick;
 
     private bool IsTooHot = true;
 
@@ -21,6 +24,7 @@ public class Sink : InteractableObjects
             Door.GetComponent<Door>().Unlock();
             print("You hear a click");
         }
+        tick.Play();
     }
 
     public override void OnPickUp(Transform offset)
