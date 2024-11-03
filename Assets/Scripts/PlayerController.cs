@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject HeldObject = null;
 
     [SerializeField] private Transform HandPos;
+    [SerializeField] private Camera cam;
 
     private bool IsHoldingSomething = false;
 
@@ -38,8 +40,16 @@ void Start()
 
     private void FixedUpdate()
     {
-        MovDir.x = Input.GetAxis("Horizontal");
-        MovDir.z = Input.GetAxis("Vertical");
+        //MovDir.x = Input.GetAxis("Horizontal");
+        //MovDir.z = Input.GetAxis("Vertical");
+
+        MovDir = cam.transform.forward * Input.GetAxis("Vertical");
+        MovDir += cam.transform.right * Input.GetAxis("Horizontal");
+
+        if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+        {
+            transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+        }
 
         if (Input.GetKeyDown(KeyCode.F) && HoveredObject != null)
         {

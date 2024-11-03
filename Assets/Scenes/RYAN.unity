@@ -330,7 +330,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535439921}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -437,6 +437,14 @@ PrefabInstance:
     - target: {fileID: 5236556783576804317, guid: 928a9daf2d43ea04aa9d4fbd9ca77da4, type: 3}
       propertyPath: m_projectionMatrixMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330400825560864100, guid: 928a9daf2d43ea04aa9d4fbd9ca77da4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330400825560864100, guid: 928a9daf2d43ea04aa9d4fbd9ca77da4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

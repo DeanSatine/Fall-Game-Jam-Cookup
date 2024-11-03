@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{2457c01a-5f44-4295-98b4-6423cff2a421}">
+		<property name="note" />
 		<property name="assetPath">
 			<value>OST/</value>
 		</property>
