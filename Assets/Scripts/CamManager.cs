@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,12 @@ public class Camera : MonoBehaviour
     [SerializeField] GameObject Monitor;
     [SerializeField] private Transform NearView;
     [SerializeField] private Transform FarView;
+    [SerializeField] private Transform[] Placements;
     [SerializeField] private float InputWait = 5.0f;
     private float InputTimer = 0;
+    private int PlaceIndex = 0;
 
+    [SerializeField] EventReference aer;
     
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -22,12 +26,16 @@ public class Camera : MonoBehaviour
     }
     void Start()
     {
-        
+        if (Placements.Length == 0) Placements = new Transform[] {transform};
+        transform.position = Placements[PlaceIndex].position;
+        transform.rotation = Placements[PlaceIndex].rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Q)) NextPlace();
 
         if (Input.anyKey) InputTimer = InputWait;
         else InputTimer -= Time.deltaTime;
@@ -42,5 +50,18 @@ public class Camera : MonoBehaviour
             Monitor.transform.position = Vector3.Lerp(Monitor.transform.position, FarView.position, 0.001f);
             Monitor.transform.rotation = Quaternion.Lerp(Monitor.transform.rotation, FarView.rotation, 0.001f);
         }
+
     }
+
+    void NextPlace()
+    {
+
+        PlaceIndex++;
+
+        if (PlaceIndex >= Placements.Length) PlaceIndex = 0;
+
+        transform.position = Placements[PlaceIndex].position;
+        transform.rotation = Placements[PlaceIndex].rotation;
+    }
+
 }
