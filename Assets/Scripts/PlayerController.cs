@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Transform Trans;
 
     private Vector3 MovDir;
-    private int MoveSpeed = 5;
+    [SerializeField] private int MoveSpeed = 5;
 
     private Vector3 Turn = new Vector3(0, 75, 0);
 
@@ -45,10 +45,18 @@ void Start()
 
         MovDir = cam.transform.forward.normalized * Input.GetAxis("Vertical");
         MovDir += cam.transform.right.normalized * Input.GetAxis("Horizontal");
+        MovDir.y = 0;
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+        if (MovDir.magnitude == 0)
         {
-            transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+            {
+                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            }
+        }
+        else
+        {
+            transform.LookAt(transform.position + MovDir.normalized);
         }
 
         if (Input.GetKeyDown(KeyCode.F) && HoveredObject != null)
