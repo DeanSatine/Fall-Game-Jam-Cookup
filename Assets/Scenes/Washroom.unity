@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 854401914}
+    - target: {fileID: 262484631714834900, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1508469766502404365, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
       propertyPath: m_Size.y
       value: 1.8047154
@@ -415,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5971785543730840796, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.74
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 5971785543730840796, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -488,7 +492,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7288106836380837609, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2106865448}
   m_SourcePrefab: {fileID: 100100000, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
 --- !u!1 &252600406
 GameObject:
@@ -793,6 +800,7 @@ GameObject:
   - component: {fileID: 671197439}
   - component: {fileID: 671197438}
   - component: {fileID: 671197441}
+  - component: {fileID: 671197442}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -877,6 +885,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98f3d75c62a50f42abe6eeedd5febf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &671197442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671197437}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0010592882, y: 0.009098443, z: 0.015234956}
+  m_Center: {x: -0.005141706, y: 0.2801662, z: 0.011160969}
 --- !u!1 &720200630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,13 +1301,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854401912}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.67559016, y: 0, z: 0, w: 0.7372774}
   m_LocalPosition: {x: -0.09, y: 8.99, z: -0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 85, y: 0, z: 0}
 --- !u!1001 &857451009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1754,6 +1783,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.1151102, y: 6.880891, z: 2.8119266}
   m_Center: {x: -2.4269376, y: 0.8005446, z: -0.009137988}
+--- !u!4 &1151097878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6990950188503418400, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
+  m_PrefabInstance: {fileID: 241602527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1310327868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,6 +2558,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.1151102, y: 6.880891, z: 2.8119266}
   m_Center: {x: -2.4269376, y: 0.8005446, z: -0.009137988}
+--- !u!1 &2106865440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7288106836380837609, guid: 7c9d4d21d81a65a46887b440a0fdb8f5, type: 3}
+  m_PrefabInstance: {fileID: 241602527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2106865448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106865440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5920a0a2643c6574baed892fc47ab994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoveredObject: {fileID: 0}
+  HeldObject: {fileID: 0}
+  HandPos: {fileID: 1151097878}
+  cam: {fileID: 854401914}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
