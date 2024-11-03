@@ -10,6 +10,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     public GameObject HoveredObject = null;
     public GameObject HeldObject = null;
+    private Animator animator;
 
     [SerializeField] private Transform HandPos;
     [SerializeField] private Camera cam;
@@ -20,16 +21,17 @@ public class PlayerControllerV2 : MonoBehaviour
     private Transform Trans;
 
     private Vector3 MovDir;
-    private int MoveSpeed = 5;
+    [SerializeField] private int MoveSpeed = 3;
 
 //    private Vector3 Turn = new Vector3(0, 75, 0);
 
 
 // Start is called before the first frame update
-void Start()
+    void Start()
     {
         Body = GetComponent<Rigidbody>();
         Trans = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,15 +42,25 @@ void Start()
 
     private void FixedUpdate()
     {
-        MovDir.x = Input.GetAxis("Horizontal");
-        MovDir.z = Input.GetAxis("Vertical");
+        //MovDir.x = Input.GetAxis("Horizontal");
+        //MovDir.z = Input.GetAxis("Vertical");
 
-        //MovDir = cam.transform.forward.normalized * Input.GetAxis("Vertical");
-        //MovDir += cam.transform.right.normalized * Input.GetAxis("Horizontal");
+        MovDir = cam.transform.forward.normalized * Input.GetAxis("Vertical");
+        MovDir += cam.transform.right.normalized * Input.GetAxis("Horizontal");
+        MovDir.y = 0;
 
-        if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+        animator.SetBool("Moving", MovDir.magnitude != 0);
+
+        if (MovDir.magnitude == 0)
         {
-            transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
+            {
+                transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
+            }
+        }
+        else
+        {
+            transform.LookAt(transform.position + MovDir.normalized);
         }
 
         if (Input.GetKey(KeyCode.F) && HoveredObject != null)
@@ -102,6 +114,9 @@ void Start()
     //Interact with the hovered object
     private void Interact()
     {
+
+        animator.Play("Interact");
+
         if (HeldObject != null)
         {
             HeldObject.GetComponent<InteractableObjects>().UseItem(HoveredObject);
