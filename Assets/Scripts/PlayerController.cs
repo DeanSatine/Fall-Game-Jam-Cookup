@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public GameObject HoveredObject = null;
+    public GameObject HeldObject = null;
 
     [SerializeField] private Transform HandPos;
 
@@ -48,12 +49,14 @@ void Start()
         {
             PickUp();
             IsHoldingSomething = true;
+            HeldObject = HoveredObject;
             print("Picking up");
         }
         if (Input.GetKey(KeyCode.Mouse1) && IsHoldingSomething == true)
         {
             PutBack();
             IsHoldingSomething = false;
+            HeldObject = null;
             print("Putting down");
         }
 
@@ -71,7 +74,7 @@ void Start()
     //These are for the object interaction system
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Interactable")
+        if (other.tag == "Interactable" && other != HeldObject)
         {
             HoveredObject = other.gameObject;
         }
@@ -88,7 +91,14 @@ void Start()
     //Interact with the hovered object
     private void Interact()
     {
-        HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
+        if (HeldObject != null)
+        {
+            HeldObject.GetComponent<InteractableObjects>().UseItem(HoveredObject);
+        }
+        else
+        {
+            HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
+        }    
     }
 
     private void PickUp()
@@ -96,6 +106,10 @@ void Start()
         if (HoveredObject.name == "Poster")
         {
             HoveredObject.GetComponent<Poster>().OnPickUp(HandPos);
+        }
+        else if (HoveredObject.name == "Cup")
+        {
+            HoveredObject.GetComponent<Cup>().OnPickUp(HandPos);
         }
     }
 
