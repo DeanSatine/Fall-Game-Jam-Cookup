@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -23,15 +24,18 @@ public class PlayerControllerV2 : MonoBehaviour
     private Vector3 MovDir;
     [SerializeField] private int MoveSpeed = 3;
 
-//    private Vector3 Turn = new Vector3(0, 75, 0);
+    private StudioEventEmitter tick;
+
+    //    private Vector3 Turn = new Vector3(0, 75, 0);
 
 
-// Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         Body = GetComponent<Rigidbody>();
         Trans = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+        tick = gameObject.GetComponent<StudioEventEmitter>();
     }
 
     // Update is called once per frame
@@ -41,6 +45,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
         if (MovDir.magnitude == 0)
         {
+            
             if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit, Mathf.Infinity))
             {
                 transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
@@ -49,6 +54,7 @@ public class PlayerControllerV2 : MonoBehaviour
         else
         {
             transform.LookAt(transform.position + MovDir.normalized);
+            tick.Play();
         }
 
     }
