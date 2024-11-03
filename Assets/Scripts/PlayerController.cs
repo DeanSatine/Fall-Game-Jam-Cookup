@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using FMODUnity;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,14 +23,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 MovDir;
     [SerializeField] private int MoveSpeed = 5;
 
-    //private Vector3 Turn = new Vector3(0, 75, 0);
+    private StudioEventEmitter tick;
+
+    private Vector3 Turn = new Vector3(0, 75, 0);
 
 
-// Start is called before the first frame update
-void Start()
+
+    // Start is called before the first frame update
+    void Start()
     {
         Body = GetComponent<Rigidbody>();
         Trans = GetComponent<Transform>();
+        tick = gameObject.GetComponent<StudioEventEmitter>();
     }
 
     // Update is called once per frame
@@ -49,6 +54,7 @@ void Start()
 
         if (MovDir.magnitude == 0)
         {
+            tick.Play();
             if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
             {
                 transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));

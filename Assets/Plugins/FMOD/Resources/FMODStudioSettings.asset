@@ -418,6 +418,7 @@ MonoBehaviour:
   - BLender
   - Effects
   - Feedback
+  - Insult
   - Music
   BanksToLoad: []
   LiveUpdatePort: 9264
