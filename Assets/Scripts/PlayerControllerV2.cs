@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerV2 : MonoBehaviour
 {
 
     public GameObject HoveredObject = null;
@@ -40,18 +40,18 @@ void Start()
 
     private void FixedUpdate()
     {
-        //MovDir.x = Input.GetAxis("Horizontal");
-        //MovDir.z = Input.GetAxis("Vertical");
+        MovDir.x = Input.GetAxis("Horizontal");
+        MovDir.z = Input.GetAxis("Vertical");
 
-        MovDir = cam.transform.forward.normalized * Input.GetAxis("Vertical");
-        MovDir += cam.transform.right.normalized * Input.GetAxis("Horizontal");
+        //MovDir = cam.transform.forward.normalized * Input.GetAxis("Vertical");
+        //MovDir += cam.transform.right.normalized * Input.GetAxis("Horizontal");
 
         if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
         {
             transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && HoveredObject != null)
+        if (Input.GetKey(KeyCode.F) && HoveredObject != null)
         {
             Interact();
         }
@@ -69,7 +69,7 @@ void Start()
             HeldObject = null;
             print("Putting down");
         }
-/*
+
         if (Input.GetKey(KeyCode.E))
         {
             Trans.Rotate(Turn * Time.deltaTime);
@@ -78,7 +78,7 @@ void Start()
         {
             Trans.Rotate(-Turn * Time.deltaTime);
         }
-*/
+
     }
 
     //These are for the object interaction system
@@ -113,6 +113,11 @@ void Start()
 
     private void PickUp()
     {
+        if (HoveredObject.name == "Sink")
+        {
+            return;
+        }
+
         if (HoveredObject.name == "Poster")
         {
             HoveredObject.GetComponent<Poster>().OnPickUp(HandPos);
@@ -128,6 +133,10 @@ void Start()
         if (HoveredObject.name == "Poster")
         {
             HoveredObject.GetComponent<Poster>().OnPutBack();
+        }
+        else if (HoveredObject.name == "Cup")
+        {
+            HoveredObject.GetComponent<Cup>().OnPutBack();
         }
     }
 }

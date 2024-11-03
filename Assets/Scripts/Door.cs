@@ -12,7 +12,7 @@ public class Door : InteractableObjects
         if (IsOpen)
         {
             //Load the right scene here
-            print("Loading! You did it!!!s");
+            print("Loading! You did it!!!");
         }
     }
 
