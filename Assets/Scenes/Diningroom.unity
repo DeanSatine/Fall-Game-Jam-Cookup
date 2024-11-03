@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1221,6 +1221,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10.94
       objectReference: {fileID: 0}
+    - target: {fileID: 3836597076548563347, guid: 6a298b215d1122a43bf248ffdc1f9d08, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f98ec3564935ef4ebd4bf4aa5941838, type: 2}
     - target: {fileID: 8584126852539385243, guid: 6a298b215d1122a43bf248ffdc1f9d08, type: 3}
       propertyPath: m_Name
       value: Door
