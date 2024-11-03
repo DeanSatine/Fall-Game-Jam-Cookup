@@ -6,8 +6,7 @@ public class Door : InteractableObjects
 {
 
     bool IsOpen = false;
-    [SerializeField] string NextScene;
-    private NextScene manager;
+    [SerializeField] NextScene manager;
 
     public override void OnInteraction()
     {

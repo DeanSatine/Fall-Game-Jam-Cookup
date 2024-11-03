@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 671197438}
   - component: {fileID: 671197441}
   - component: {fileID: 671197442}
+  - component: {fileID: 671197443}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactable
@@ -889,7 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98f3d75c62a50f42abe6eeedd5febf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextScene: 
+  manager: {fileID: 671197443}
 --- !u!65 &671197442
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -911,6 +912,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0010592882, y: 0.009098443, z: 0.015234956}
   m_Center: {x: -0.005141706, y: 0.2801662, z: 0.011160969}
+--- !u!114 &671197443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671197437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6beefc0cd219b4eb082152b35cca39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  to: Kitchen
 --- !u!1 &720200630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,7 +1670,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5082633825db7db42a7deacc4e64316b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
