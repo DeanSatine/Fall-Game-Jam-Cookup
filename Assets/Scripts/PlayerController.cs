@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
         if (MovDir.magnitude == 0)
         {
-            transform.LookAt(new Vector3(hit.point.x, transform.position.y, hit.point.z));
             tick.Play();
             if (Physics.Raycast(cam.ScreenPointToRay(Mouse.current.position.value), out RaycastHit hit))
             {
