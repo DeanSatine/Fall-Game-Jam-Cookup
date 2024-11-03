@@ -6,6 +6,8 @@ public class Door : InteractableObjects
 {
 
     bool IsOpen = false;
+    [SerializeField] string NextScene;
+    private NextScene manager;
 
     public override void OnInteraction()
     {
@@ -13,6 +15,7 @@ public class Door : InteractableObjects
         {
             //Load the right scene here
             print("Loading! You did it!!!");
+            manager.DOTHETHING();
         }
     }
 
