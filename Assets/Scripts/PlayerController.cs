@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 MovDir;
     [SerializeField] private int MoveSpeed = 5;
 
-    private Vector3 Turn = new Vector3(0, 75, 0);
+    //private Vector3 Turn = new Vector3(0, 75, 0);
 
 
 // Start is called before the first frame update
