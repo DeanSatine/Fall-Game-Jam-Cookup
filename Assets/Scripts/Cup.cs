@@ -38,10 +38,12 @@ public class Cup : InteractableObjects
         if (IsHeld && thing.name == "Toilet")
         {
             IsFull = true;
+            print("It's full... ew");
         }
         else if (IsHeld && thing.name == "Sink" && IsFull)
         {
             thing.GetComponent<InteractableObjects>().OnInteraction();
+            print("Cooling");
         }
     }
 

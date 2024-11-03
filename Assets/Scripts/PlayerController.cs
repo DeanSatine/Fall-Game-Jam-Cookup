@@ -105,10 +105,10 @@ void Start()
         {
             HeldObject.GetComponent<InteractableObjects>().UseItem(HoveredObject);
         }
-        else
+        else if (HoveredObject.name != "Sink")
         {
             HoveredObject.GetComponent<InteractableObjects>().OnInteraction();
-        }    
+        } 
     }
 
     private void PickUp()
