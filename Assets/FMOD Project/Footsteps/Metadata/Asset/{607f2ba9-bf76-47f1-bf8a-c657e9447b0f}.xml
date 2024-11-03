@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{607f2ba9-bf76-47f1-bf8a-c657e9447b0f}">
+		<property name="assetPath">
+			<value>Action Feedback/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{93f92aa9-1620-4c4b-afa9-d6284e14cbd7}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{259dc8c5-5ec7-4a40-bcea-cf43b06be538}">
+		<property name="assetPath">
+			<value>Effects/Voice 001.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>16.404897959183675</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{93f92aa9-1620-4c4b-afa9-d6284e14cbd7}</destination>
+		</relationship>
+	</object>
+</objects>

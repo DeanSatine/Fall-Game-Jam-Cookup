@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{7de042b5-2f4c-48d6-aa11-aea6ca4886dc}">
+		<property name="assetPath">
+			<value>OST/Not Quite Right.mp3without percusion.mp3.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>93.1004081632653</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{93f92aa9-1620-4c4b-afa9-d6284e14cbd7}</destination>
+		</relationship>
+	</object>
+</objects>
