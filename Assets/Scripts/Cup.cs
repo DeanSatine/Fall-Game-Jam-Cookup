@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Poster : InteractableObjects
+public class Cup : InteractableObjects
 {
 
     private Vector3 PutBackOffset = new Vector3(0, 0, 0);
@@ -11,6 +12,9 @@ public class Poster : InteractableObjects
     private Transform Hand = null;
 
     private Transform ThisPos;
+
+    private bool IsHeld = false;
+    private bool IsFull = false;
 
 
     // Start is called before the first frame update
@@ -31,7 +35,16 @@ public class Poster : InteractableObjects
 
     public override void UseItem(GameObject thing)
     {
-        throw new System.NotImplementedException();
+        if (IsHeld && thing.name == "Toilet")
+        {
+            IsFull = true;
+            print("It's full... ew");
+        }
+        else if (IsHeld && thing.name == "Sink" && IsFull)
+        {
+            thing.GetComponent<InteractableObjects>().OnInteraction();
+            print("Cooling");
+        }
     }
 
     public override void OnInteraction()
@@ -43,11 +56,13 @@ public class Poster : InteractableObjects
     {
         PutBackOffset = offset.position - ThisPos.position;
         Hand = offset;
+        IsHeld = true;
     }
 
     public override void OnPutBack()
     {
         Hand = null;
         ThisPos.position += PutBackOffset;
+        IsHeld = false;
     }
 }
