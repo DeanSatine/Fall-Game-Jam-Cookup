@@ -14,10 +14,12 @@ public class Sink : InteractableObjects
         if (IsTooHot)
         {
             IsTooHot = false;
+            print("Im too hot");
         }
         else
         {
             Door.GetComponent<Door>().Unlock();
+            print("You hear a click");
         }
     }
 

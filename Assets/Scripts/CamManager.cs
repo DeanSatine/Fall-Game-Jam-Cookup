@@ -14,8 +14,6 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float InputWait = 5.0f;
     private float InputTimer = 0;
     private int PlaceIndex = 0;
-
-    [SerializeField] EventReference aer;
     
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
