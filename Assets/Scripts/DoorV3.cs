@@ -6,6 +6,7 @@ public class DoorV3 : InteractableObjects
 {
 
     bool IsOpen = false;
+    [SerializeField] NextScene manager;
 
     public override void OnInteraction()
     {
@@ -13,6 +14,7 @@ public class DoorV3 : InteractableObjects
         {
             levelmanager.isDoorOpen = true;
             print("Did you get the poster?");
+            manager.DOTHETHING();
         }
     }
 
