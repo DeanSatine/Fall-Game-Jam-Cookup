@@ -22,7 +22,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private Vector3 MovDir;
     private int MoveSpeed = 5;
 
-    private Vector3 Turn = new Vector3(0, 75, 0);
+//    private Vector3 Turn = new Vector3(0, 75, 0);
 
 
 // Start is called before the first frame update
@@ -55,7 +55,8 @@ void Start()
         {
             Interact();
         }
-        if (Input.GetKey(KeyCode.Mouse0) && HoveredObject != null && IsHoldingSomething == false)
+        if (Input.GetKey(KeyCode.Mouse0) && HoveredObject != null && IsHoldingSomething == false
+            && (HoveredObject.name == "Cup" || HoveredObject.name == "Poster"))
         {
             PickUp();
             IsHoldingSomething = true;
@@ -69,7 +70,7 @@ void Start()
             HeldObject = null;
             print("Putting down");
         }
-
+/*
         if (Input.GetKey(KeyCode.E))
         {
             Trans.Rotate(Turn * Time.deltaTime);
@@ -78,7 +79,7 @@ void Start()
         {
             Trans.Rotate(-Turn * Time.deltaTime);
         }
-
+*/
     }
 
     //These are for the object interaction system
@@ -113,11 +114,6 @@ void Start()
 
     private void PickUp()
     {
-        if (HoveredObject.name == "Sink")
-        {
-            return;
-        }
-
         if (HoveredObject.name == "Poster")
         {
             HoveredObject.GetComponent<Poster>().OnPickUp(HandPos);
