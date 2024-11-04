@@ -1453,7 +1453,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17e2a384ef382ac41ae9a35f8bd082c6, type: 2}
+  - {fileID: 2100000, guid: 5e5602000ddcf554ab85aac87e721b01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1939,8 +1939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 1000}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: 493.6413, y: 1000}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1264172725
 MonoBehaviour:
@@ -1975,23 +1975,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '
+  m_Text: 'Cooldown the sink water
 
-
-    Controls:
-
-
-    WASD: Movement
-
-
-    F: Interact with object near
-    you
-
-
-    Left-Click: Pick up object
-
-
-    Right-Click: Put down object'
+    (with colder water)'
 --- !u!222 &1264172726
 CanvasRenderer:
   m_ObjectHideFlags: 0
