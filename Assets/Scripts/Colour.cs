@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class Colour : InteractableObjects
 
     bool IsFound = true;
 
+    StudioEventEmitter aer;
+
     public override void OnInteraction()
     {
         if (IsFound)
@@ -16,6 +19,7 @@ public class Colour : InteractableObjects
             print("You found me");
             Door.GetComponent<DoorV3>().Unlock();
             print("You hear a click");
+            aer.Play();
         }
     }
 
@@ -37,7 +41,7 @@ public class Colour : InteractableObjects
     // Start is called before the first frame update
     void Start()
     {
-        
+        aer = GetComponent<StudioEventEmitter>();
     }
 
     // Update is called once per frame

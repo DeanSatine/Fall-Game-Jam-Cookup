@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Security;
@@ -16,11 +17,13 @@ public class Cup : InteractableObjects
     private bool IsHeld = false;
     private bool IsFull = false;
 
+    private StudioEventEmitter aer;
 
     // Start is called before the first frame update
     void Start()
     {
         ThisPos = GetComponent<Transform>();
+        aer = GetComponent<StudioEventEmitter>();
     }
 
     // Update is called once per frame
@@ -39,11 +42,13 @@ public class Cup : InteractableObjects
         {
             IsFull = true;
             print("It's full... ew");
+            aer.Play();
         }
         else if (IsHeld && thing.name == "Sink" && IsFull)
         {
             thing.GetComponent<InteractableObjects>().OnInteraction();
             print("Cooling");
+            aer.Play();
         }
     }
 

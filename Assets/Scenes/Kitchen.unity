@@ -3130,7 +3130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3486,6 +3486,7 @@ GameObject:
   - component: {fileID: 2002786129}
   - component: {fileID: 2002786131}
   - component: {fileID: 2002786132}
+  - component: {fileID: 2002786133}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Interactable
@@ -3592,6 +3593,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.012970377, y: 0.011737762, z: 0.023173982}
   m_Center: {x: -0.00010832003, y: 0.2617869, z: 0.0113862185}
+--- !u!114 &2002786133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002786127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1182327727
+      Data2: 1095974071
+      Data3: 889504664
+      Data4: 1979424
+    Path: event:/Correct
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 456.03
 --- !u!1 &2055896948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,7 +3669,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 17.42
+  m_Range: 27.89
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

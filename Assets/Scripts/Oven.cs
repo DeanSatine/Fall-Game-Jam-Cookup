@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,10 @@ public class Oven : InteractableObjects
 
     bool IsOn = true;
 
+    StudioEventEmitter aer;
+
+    
+
     public override void OnInteraction()
     {
         if (IsOn)
@@ -16,6 +21,7 @@ public class Oven : InteractableObjects
             print("Im off now");
             Door.GetComponent<DoorV2>().Unlock();
             print("You hear a click");
+            aer.Play();
         }
     }
 
@@ -37,7 +43,7 @@ public class Oven : InteractableObjects
     // Start is called before the first frame update
     void Start()
     {
-        
+        aer = new StudioEventEmitter();
     }
 
     // Update is called once per frame
